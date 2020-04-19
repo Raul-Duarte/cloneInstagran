@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 export default class Login extends Component {
     state = {
@@ -42,16 +42,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     buttom: {
-        marginTop: 3,
+        marginTop: 30,
         padding: 10,
         backgroundColor: '#4286f4'
     },
     buttonText: {
-        marginTop: 20,
-        width: '90%',
-        backgroundColor: '#EEE',
+        fontSize:28,
+        color: '#fff',
         height: 40,
-        borderWidth: 1,
-        borderColor: '#333'
+    },
+    input: {
+        marginTop:20,
+        width:'90%',
+        backgroundColor:"#EEE",
+        height:40,
+        borderWidth:1,
+        borderColor:'#333'
     }
+
 })
+

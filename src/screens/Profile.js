@@ -9,7 +9,7 @@ import { color } from 'react-native-reanimated';
 
 export default class Profile extends Component {
   logout = () => {
-
+    this.props.navigation.navigate('Login');
   }
   render() {
     const options = { email: 'fulando@gmail.com', secure: true }
