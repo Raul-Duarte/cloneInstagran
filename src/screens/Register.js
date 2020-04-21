@@ -20,15 +20,15 @@ export default class Register extends Component {
       <View style={styles.container}>
         <TextInput placeholder="Nome" style={styles.input}
           autoFocus={true} value={this.state.name}
-          onChangeText={name = this.setState({ name })}
+          onChangeText={name => this.setState({ name })}
         />
         <TextInput placeholder="Email" style={styles.input}
           value={this.state.email} keyboardType='email-address'
-          onChangeText={email = this.setState({ email })}
+          onChangeText={email => this.setState({ email })}
         />
         <TextInput placeholder="Senha" style={styles.input}
-          value={this.state.email} secureTextEntry={true}
-          onChangeText={email = this.setState({ email })}
+          value={this.state.password} secureTextEntry={true}
+          onChangeText={password => this.setState({ password })}
         />
         <TouchableOpacity onPress={() => { }} style={styles.buttom}>
           <Text style={styles.buttomText} >SAlvar</Text>

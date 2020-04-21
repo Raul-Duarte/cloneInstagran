@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { login } from '../store/actions/user'
+import {
+    View,
+    Text,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity
+} from 'react-native';
 
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-
-export default class Login extends Component {
+class Login extends Component {
     state = {
+        name: 'Temporario',
         email: '',
         password: '',
     }
 
     login = () => {
-        this.props.navigation.navigate('Profile')
+        this.props.onLogin({...this.state})
+        this.props.navigation.navigate('Home', { screen: 'Profile' });
     }
     render() {
         return (
@@ -26,7 +35,11 @@ export default class Login extends Component {
                 <TouchableOpacity onPress={this.login} style={styles.buttom}>
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }} style={styles.buttom}>
+
+                <TouchableOpacity onPress={() => {
+                    this.props.navigation.navigate('Register')
+                }} style={styles.buttom}>
+
                     <Text style={styles.buttonText}>Criar Conta</Text>
                 </TouchableOpacity>
             </View>
@@ -47,18 +60,25 @@ const styles = StyleSheet.create({
         backgroundColor: '#4286f4'
     },
     buttonText: {
-        fontSize:28,
+        fontSize: 28,
         color: '#fff',
         height: 40,
     },
     input: {
-        marginTop:20,
-        width:'90%',
-        backgroundColor:"#EEE",
-        height:40,
-        borderWidth:1,
-        borderColor:'#333'
+        marginTop: 20,
+        width: '90%',
+        backgroundColor: "#EEE",
+        height: 40,
+        borderWidth: 1,
+        borderColor: '#333'
     }
 
 })
 
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: user => dispatch(login(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

@@ -11,11 +11,12 @@ import Register from './screens/Register'
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator();
 
-export function Home() {
+function Home() {
     return (
-        <Tab.Navigator initialRouteName="Feed" tabBarOptions={{ showLabel: false, activeTintColor: '#e91e63' }}>
+        <Tab.Navigator initialRouteName="Feed"  tabBarOptions={{ showLabel: false, activeTintColor: '#e91e63' }}>
 
             <Tab.Screen
+                 
                 name="Feed"
                 component={Feed}
                 options={{
@@ -39,16 +40,16 @@ export function Home() {
                         <Icon name="user" color={color} size={30} />
                 }}
             />
-            <Tab.Screen name="Login">
-                {() => (
-                    <Stack.Navigator>
-                        <Stack.Screen name="Login" component={Login} />
-                    </Stack.Navigator>
-                )}
-
-            </Tab.Screen>
-
         </Tab.Navigator>
     )
 }
 
+export default function Config() {
+    return (
+        <Stack.Navigator initialRouteName="Login">
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Login" title="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
+        </Stack.Navigator>
+    );
+}
